@@ -14,7 +14,11 @@ public class Biglietteria {
 		System.out.print("quanti anni hai??");
 		double age = sc.nextInt();
 		System.out.print("è flessibile??");
-		boolean flexible = true;
+		boolean flexible = sc.hasNext();
+		if(flexible) {
+			 System.out.println("il biglietto da voi comprato è flessibile");
+		}
+		
 		
 		try {
 			
