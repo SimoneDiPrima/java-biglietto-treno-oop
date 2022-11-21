@@ -3,7 +3,7 @@ package org.mobilitygeneration.italy;
 public class Biglietto {
 	private double kilometers;
 	private double age;
-	private double calcolaSconto = 0;
+	private double calcolaSconto;
 	
 	
 	
@@ -12,9 +12,9 @@ public class Biglietto {
 		setKilometers(kilometers);
 		setAge(age);
 	}
-	public double getPrezzo(double kilometers, double age,double calcolaSconto) {
+	public double getPrezzo() {
 	
-		double prezzo = (kilometers * 0.21) - calcolaSconto;
+		double prezzo = (kilometers * 0.21) - getCalcolaSconto(kilometers ,age) ;
 		return prezzo;
 	}
 	
@@ -43,10 +43,10 @@ public class Biglietto {
 	public double getCalcolaSconto(double kilometers , double age) {
 		double calcolaSconto = 0;
 	 if(age < 18) {
-		this.calcolaSconto = (kilometers * 0.21) * 0.40;
+		calcolaSconto = (kilometers * 0.21) * 0.20;
 	 }
 	 if(age >=65 ) {
-		 this.calcolaSconto =  (kilometers * 0.21) * 0.60;
+		calcolaSconto =  (kilometers * 0.21) * 0.40;
 	 }
 		return this.calcolaSconto = calcolaSconto;
 	}
@@ -54,7 +54,8 @@ public class Biglietto {
 	@Override
 	public String toString() {
 		
-		return  "il passeggero ha:" + age + "anni" + "\nil costo del biglietto è : " + getPrezzo(kilometers,age,calcolaSconto) + "€";
+		return  "il passeggero ha:" + age + "anni" + "\nil costo del biglietto è : "
+		+ getPrezzo() + "€";
 	}
 		
 	}
