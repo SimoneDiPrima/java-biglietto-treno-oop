@@ -16,6 +16,7 @@ public class Biglietteria {
 		
 		try {
 			
+			
 			Biglietto p = new Biglietto(kilometers, age);
 			System.out.print(p);	
 			

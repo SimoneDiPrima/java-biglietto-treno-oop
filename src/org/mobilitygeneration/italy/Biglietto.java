@@ -2,22 +2,22 @@ package org.mobilitygeneration.italy;
 
 public class Biglietto {
 	private double kilometers;
-	private int age;
-	public double prezzo = kilometers * 0.21;
+	private double age;
+	private double calcolaSconto = 0;
 	
-
-	private double calcolaSconto;
-	public Biglietto(int kilometers,int age)throws Exception{
+	
+	
+	
+	public Biglietto(double kilometers,double age)throws Exception{
 		setKilometers(kilometers);
 		setAge(age);
 	}
-	public double getPrezzo() {
+	public double getPrezzo(double kilometers, double age,double calcolaSconto) {
+	
+		double prezzo = (kilometers * 0.21) - calcolaSconto;
 		return prezzo;
 	}
-	public void setPrezzo(double prezzo) {
-		this.prezzo = kilometers * 0.21;
-		this.prezzo = prezzo;
-	}
+	
 	public double getKilometers() {
 		return kilometers;
 	}
@@ -30,22 +30,23 @@ public class Biglietto {
 		this.kilometers = kilometers;
 	}
 
-	public int getAge() {
+	public double getAge() {
 		return age;
 	}
 
-	public void setAge(int age) throws Exception {
+	public void setAge(double age) throws Exception {
 		if(age <= 0 ) {
 			throw new Exception("il cliente deve avere un eta di almeno un anno!");
 		}
 		this.age = age;
 	}
 	public double getCalcolaSconto(double kilometers , double age) {
+		double calcolaSconto = 0;
 	 if(age < 18) {
-		 calcolaSconto = kilometers * 0.21 * 20;
+		this.calcolaSconto = (kilometers * 0.21) * 0.40;
 	 }
 	 if(age >=65 ) {
-		 calcolaSconto = kilometers * 0.21 * 40;
+		 this.calcolaSconto =  (kilometers * 0.21) * 0.60;
 	 }
 		return this.calcolaSconto = calcolaSconto;
 	}
@@ -53,7 +54,7 @@ public class Biglietto {
 	@Override
 	public String toString() {
 		
-		return  "il passeggero ha:" + age + "anni" + "\nil costo del biglietto è : " + prezzo;
+		return  "il passeggero ha:" + age + "anni" + "\nil costo del biglietto è : " + getPrezzo(kilometers,age,calcolaSconto) + "€";
 	}
 		
 	}
