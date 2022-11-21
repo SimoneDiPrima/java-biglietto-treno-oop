@@ -10,14 +10,16 @@ public class Biglietteria {
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.print("quanti km vuoi percorrere??");
-		int kilometers = sc.nextInt();
+		double kilometers = sc.nextInt();
 		System.out.print("quanti anni hai??");
-		int age = sc.nextInt();
+		double age = sc.nextInt();
+		System.out.print("è flessibile??");
+		boolean flexible = true;
 		
 		try {
 			
 			
-			Biglietto p = new Biglietto(kilometers, age);
+			Biglietto p = new Biglietto(kilometers, age, flexible);
 			System.out.print(p);	
 			
 		} catch(Exception e) {
